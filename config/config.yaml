@@ -1,0 +1,9 @@
+# app name
+app_name: 'init-gin-project'
+# http addr
+addr: ':8080'
+# gin model: debug, release
+gin_model: 'debug'
+# log level of zap log
+# if log level is set to release, access log will not print
+log_level: 'INFO'
