@@ -1,5 +1,12 @@
 # init gin project
 
+## Documentation
+
+- [english](./readme.md)
+- [中文](./readme_zh.md)
+
+## introduction
+
 init a `gin` project.
 
 - use `zap` as logger
