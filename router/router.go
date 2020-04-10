@@ -13,7 +13,7 @@ import (
 )
 
 // InitRouter : init router
-func InitRouter() {
+func InitRouter() *gin.Engine {
 	// set gin model
 	gin.SetMode(config.Cfg.GinModel)
 
@@ -41,5 +41,5 @@ func InitRouter() {
 	// set pprof
 	pprof.Register(router, "/debug/pprof")
 
-	router.Run(config.Cfg.Addr)
+	return router
 }

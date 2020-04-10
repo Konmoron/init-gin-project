@@ -30,13 +30,14 @@ type config struct {
 }
 
 var (
-	cfgFile = "config/config.yaml"
+	// cfgFile = "config/config.yaml"
+
 	// Cfg : global config
 	Cfg = &config{}
 )
 
 // read config.yaml
-func (c *config) readFromFile() {
+func (c *config) readFromFile(cfgFile string) {
 	fmt.Println("Read config from ", cfgFile)
 	viper.SetConfigFile(cfgFile)
 
@@ -122,7 +123,7 @@ func (c *config) readFromOSEnv() {
 // InitConf : init config
 // first read config from config.yaml,
 // then read config from env in os
-func InitConf() {
-	Cfg.readFromFile()
+func InitConf(cfgFile string) {
+	Cfg.readFromFile(cfgFile)
 	Cfg.readFromOSEnv()
 }

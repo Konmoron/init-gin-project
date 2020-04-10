@@ -24,6 +24,13 @@
 
 `config` 中的配置项的名称，在系统环境变量的对应名称格式为：SCREAMING_SNAKE_CASE，比如：`config.AppName`，在系统的环境变量名称为：`APP_NAME`。
 
+## 关于单元测试
+
+```shell
+cd test
+go test -v -run TestHealthcheckRoute
+```
+
 ## 参考
 
 - [go-gin 框架使用](https://juejin.im/post/5bfbbaa5e51d45315070d435)

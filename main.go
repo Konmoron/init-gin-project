@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	config.InitConf()
+	config.InitConf("config/config.yaml")
 
 	log.InitLog(config.Cfg.LogLevel)
 
@@ -15,5 +15,7 @@ func init() {
 }
 
 func main() {
-	router.InitRouter()
+	r := router.InitRouter()
+
+	r.Run(config.Cfg.Addr)
 }

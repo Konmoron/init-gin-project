@@ -22,6 +22,13 @@ some config, such as db config or password, cannot upload to github or other onl
 
 the name of config in os must be SCREAMING_SNAKE_CASE. such as: the name of `config.AppName` in os is `APP_NAME`.
 
+## about unittest
+
+```shell
+cd test
+go test -v -run TestHealthcheckRoute
+```
+
 ## References
 
 - [go-gin 框架使用](https://juejin.im/post/5bfbbaa5e51d45315070d435)
