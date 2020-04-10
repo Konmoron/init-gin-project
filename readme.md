@@ -11,7 +11,8 @@ init a `gin` project.
 
 - use `zap` as logger
 - use `viper` to read config.yaml
-- set healthcheck controller
+- set healthcheck router
+- add unittest for healthcheck router
 
 ## about config
 

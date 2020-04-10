@@ -11,7 +11,8 @@
 
 - 使用 `zap` 输出日志
 - 使用 `viper` 读取 `config.yaml`
-- 设置 `healthcheck` 接口
+- 设置 `healthcheck` 路由
+- 为 `healthcheck` 路由增加单元测试
 
 ## 关于配置文件
 
