@@ -47,7 +47,7 @@ func UnittestGet(uri string, router *gin.Engine) (*http.Response, []byte) {
 // UnittestPostForm 根据特定请求uri和参数param，以表单形式传递参数，发起post请求返回响应
 func UnittestPostForm(uri string, param map[string]string, router *gin.Engine) []byte {
 	// 构造post请求，表单数据以querystring的形式加在uri之后
-	req := httptest.NewRequest("POST", uri+TestParseToStr(param), nil)
+	req := httptest.NewRequest("POST", uri+UnittestParseToStr(param), nil)
 
 	// 初始化响应
 	w := httptest.NewRecorder()
