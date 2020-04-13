@@ -8,6 +8,7 @@ import (
 	"github.com/Konmoron/init-gin-project/config"
 	"github.com/Konmoron/init-gin-project/log"
 	"github.com/Konmoron/init-gin-project/router"
+	"github.com/Konmoron/init-gin-project/utils"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -23,7 +24,7 @@ func init() {
 func TestHealthcheckRoute(t *testing.T) {
 	r := router.InitRouter()
 
-	res, body := Get("/healthcheck", r)
+	res, body := utils.TestGet("/healthcheck", r)
 
 	var resData map[string]interface{}
 
