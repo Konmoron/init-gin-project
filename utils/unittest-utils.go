@@ -24,10 +24,30 @@ func UnittestParseToStr(mp map[string]string) string {
 	return values
 }
 
-// UnittestGet 根据特定请求uri，发起get请求返回响应
+// UnittestGet 根据特定请求uri，发起get请求，返回响应
 func UnittestGet(uri string, router *gin.Engine) (*http.Response, []byte) {
 	// 构造get请求
 	req := httptest.NewRequest("GET", uri, nil)
+	// 初始化响应
+	w := httptest.NewRecorder()
+
+	// 调用相应的handler接口
+	router.ServeHTTP(w, req)
+
+	// 提取响应
+	result := w.Result()
+	defer result.Body.Close()
+
+	// 读取响应body
+	body, _ := ioutil.ReadAll(result.Body)
+
+	return result, body
+}
+
+// UnittestDelete 根据特定请求uri，发起 delete 请求，返回响应
+func UnittestDelete(uri string, router *gin.Engine) (*http.Response, []byte) {
+	// 构造get请求
+	req := httptest.NewRequest("DELETE", uri, nil)
 	// 初始化响应
 	w := httptest.NewRecorder()
 
