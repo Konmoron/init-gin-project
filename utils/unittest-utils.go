@@ -13,8 +13,8 @@ import (
 // References:
 // 	1. https://studygolang.com/articles/11836
 
-// TestParseToStr 将map中的键值对输出成querystring形式
-func TestParseToStr(mp map[string]string) string {
+// UnittestParseToStr 将map中的键值对输出成querystring形式
+func UnittestParseToStr(mp map[string]string) string {
 	values := ""
 	for key, val := range mp {
 		values += "&" + key + "=" + val
@@ -24,8 +24,8 @@ func TestParseToStr(mp map[string]string) string {
 	return values
 }
 
-// TestGet 根据特定请求uri，发起get请求返回响应
-func TestGet(uri string, router *gin.Engine) (*http.Response, []byte) {
+// UnittestGet 根据特定请求uri，发起get请求返回响应
+func UnittestGet(uri string, router *gin.Engine) (*http.Response, []byte) {
 	// 构造get请求
 	req := httptest.NewRequest("GET", uri, nil)
 	// 初始化响应
@@ -44,10 +44,10 @@ func TestGet(uri string, router *gin.Engine) (*http.Response, []byte) {
 	return result, body
 }
 
-// TestPostForm 根据特定请求uri和参数param，以表单形式传递参数，发起post请求返回响应
-func TestPostForm(uri string, param map[string]string, router *gin.Engine) []byte {
+// UnittestPostForm 根据特定请求uri和参数param，以表单形式传递参数，发起post请求返回响应
+func UnittestPostForm(uri string, param map[string]string, router *gin.Engine) []byte {
 	// 构造post请求，表单数据以querystring的形式加在uri之后
-	req := httptest.NewRequest("POST", uri+ParseToStr(param), nil)
+	req := httptest.NewRequest("POST", uri+TestParseToStr(param), nil)
 
 	// 初始化响应
 	w := httptest.NewRecorder()
@@ -64,8 +64,8 @@ func TestPostForm(uri string, param map[string]string, router *gin.Engine) []byt
 	return body
 }
 
-// TestPostJSON 根据特定请求uri和参数param，以Json形式传递参数，发起post请求返回响应
-func TestPostJSON(uri string, param map[string]interface{}, router *gin.Engine) []byte {
+// UnittestPostJSON 根据特定请求uri和参数param，以Json形式传递参数，发起post请求返回响应
+func UnittestPostJSON(uri string, param map[string]interface{}, router *gin.Engine) []byte {
 	// 将参数转化为json比特流
 	jsonByte, _ := json.Marshal(param)
 
