@@ -18,13 +18,13 @@ func init() {
 	config.InitConf("../config/config.yaml")
 
 	// init log
-	log.InitLog(config.Cfg.LogLevel)
+	log.InitLog(config.Cfg.LogLevel, "../log")
 }
 
 func TestHealthcheckRoute(t *testing.T) {
 	r := router.InitRouter()
 
-	res, body := utils.TestGet("/healthcheck", r)
+	res, body := utils.UnittestGet("/healthcheck", r)
 
 	var resData map[string]interface{}
 
