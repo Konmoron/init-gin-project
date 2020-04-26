@@ -1,8 +1,9 @@
 package log
 
 import (
+	"path"
+
 	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 )
 
 // MainLogger : main logger
@@ -12,31 +13,10 @@ var MainLogger *zap.Logger
 var GinLogger *zap.Logger
 
 // InitLog : init all logger
-func InitLog(levelString string) {
-	// set log level
-	var level zapcore.Level
-	err := level.Set(levelString)
-	if err != nil {
-		level.Set("INFO")
-	}
-
-	// set file path
-	MainLogger = NewLogger(
-		"./log/main.log",
-		level,
-		1024,
-		30,
-		1,
-		true,
-		"main")
-	// set file path
-	GinLogger = NewLogger(
-		"./log/gin.log",
-		level,
-		1024,
-		30,
-		1,
-		true,
-		"gin")
+// levelString log level string: "DEBUG" "INFO" ...
+// logDir log file dir
+func InitLog(levelString, logDir string) {
+	MainLogger = NewZapLoggerSimple(levelString, path.Join(logDir, "main.log"), "main")
+	GinLogger = NewZapLoggerSimple(levelString, path.Join(logDir, "gin.log"), "gin")
 	MainLogger.Info("start logs successfully")
 }

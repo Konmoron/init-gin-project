@@ -23,9 +23,32 @@ import (
  * compress 是否压缩
  * serviceName 服务名
  */
-func NewLogger(filePath string, level zapcore.Level, maxSize int, maxBackups int, maxAge int, compress bool, serviceName string) *zap.Logger {
+func NewZapLogger(filePath string, level zapcore.Level, maxSize int, maxBackups int, maxAge int, compress bool, serviceName string) *zap.Logger {
 	core := newCore(filePath, level, maxSize, maxBackups, maxAge, compress)
 	return zap.New(core, zap.AddCaller(), zap.Development(), zap.Fields(zap.String("LogName", serviceName)))
+}
+
+// NewZapLoggerSimple create a new zap logger
+// levelString log level string: "DEBUG" "INFO" ...
+// path log path
+// serviceName log service name
+func NewZapLoggerSimple(levelString string, path string, serviceName string) *zap.Logger {
+	// set log level
+	var level zapcore.Level
+	err := level.Set(levelString)
+	if err != nil {
+		level.Set("INFO")
+	}
+
+	if path == "" {
+		path = "./log/main.log"
+	}
+
+	if serviceName == "" {
+		serviceName = "main"
+	}
+
+	return NewZapLogger(path, level, 1024, 30, 1, true, serviceName)
 }
 
 /**
