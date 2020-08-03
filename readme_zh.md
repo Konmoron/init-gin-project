@@ -32,6 +32,11 @@ cd test
 go test -v -run TestHealthcheckRoute
 ```
 
+## about swagger
+
+- [swagger usage](https://github.com/swaggo/swag)
+- [gin-swagger usage](https://github.com/swaggo/gin-swagger)
+
 ## 参考
 
 - [go-gin 框架使用](https://juejin.im/post/5bfbbaa5e51d45315070d435)
