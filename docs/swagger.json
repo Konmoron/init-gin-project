@@ -1,0 +1,52 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "init-gin-project",
+        "title": "init-gin-project",
+        "contact": {
+            "name": "Konmoron",
+            "email": "cqlq2012@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "paths": {
+        "/healthcheck": {
+            "get": {
+                "description": "healthcheck\n",
+                "summary": "healthcheck",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.HealthcheckResult"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.HealthcheckResult": {
+            "type": "object",
+            "properties": {
+                "app_name": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

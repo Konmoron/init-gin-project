@@ -9,6 +9,8 @@ _test
 .idea
 .vscode
 
+*__debug_bin
+
 
 *.cgo1.go
 *.cgo2.c

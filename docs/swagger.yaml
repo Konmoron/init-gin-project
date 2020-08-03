@@ -1,0 +1,35 @@
+definitions:
+  model.HealthcheckResult:
+    properties:
+      app_name:
+        type: string
+      code:
+        type: integer
+      status:
+        type: string
+      time:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: cqlq2012@gmail.com
+    name: Konmoron
+  description: init-gin-project
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: init-gin-project
+  version: "1.0"
+paths:
+  /healthcheck:
+    get:
+      description: |
+        healthcheck
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.HealthcheckResult'
+      summary: healthcheck
+swagger: "2.0"
